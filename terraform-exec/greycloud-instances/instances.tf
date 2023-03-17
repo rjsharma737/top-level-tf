@@ -1,5 +1,5 @@
 module "instance" {
-  source = "./path/to/module"
+  source = "github.com/rjsharma737/gpc-vpc-module//terraform-network-module/instances"
 
   instance_count           = var.instance_count
   instance_names           = var.instance_names
