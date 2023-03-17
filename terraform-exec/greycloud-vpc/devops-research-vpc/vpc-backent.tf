@@ -1,2 +1,2 @@
 bucket  = "terraform-dev-statefiles"
-prefix  = "terraform-devopsresearch-vpc-network/devopsresearch-vpc-subnet-state"
+prefix  = "terraform-arch/devops-${var.project}-vpc-state"
