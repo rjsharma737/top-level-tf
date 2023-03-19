@@ -85,5 +85,27 @@ variable "metadata" {
   default     = {}
 }
 
+variable "gce_ssh_user" {
+  description = "username for ssh connection"
+}
+
+variable "gce_ssh_pub_key_file" {
+  description = "public key for ssh connection"
+}
+
+variable "gce_ssh_private_key_file" {
+  description = "private key for ssh connection"
+  type        = string
+  default     = "/tmp/gcp_key_greymatter"
+}
+
+variable "gce_ssh_user1" {
+  description = "username for ssh connection"
+  default = ""
+}
+
+variable "gce_ssh_pub_key_file1" {
+  description = "public key for ssh connection"
+}
 
 ##########
