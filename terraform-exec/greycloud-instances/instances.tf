@@ -13,6 +13,24 @@ module "instance" {
   delete_disks_on_instance_delete = var.delete_disks_on_instance_delete
   subnet_name              = var.subnet_name
   subnet_region            = var.subnet_region
+  metadata                 = {
+                            ssh-keys = "${var.gce_ssh_user}:${file(var.gce_ssh_pub_key_file)}"
+                            startup-script = <<-EOF
+                            curl -sSO https://dl.google.com/cloudagents/add-google-cloud-ops-agent-repo.sh
+                            sudo bash add-google-cloud-ops-agent-repo.sh --also-install
+                            sudo cat <<EOF > /etc/logrotate.d/google-cloud-ops-agent
+                            /var/log/google-cloud-ops-agent/subagents/logging-module.log
+                            {
+                                rotate 14
+                                daily
+                                missingok
+                                dateext
+                                copytruncate
+                                notifempty
+                                compress
+                            }
+                            EOF
+                            }
 }
 
 
